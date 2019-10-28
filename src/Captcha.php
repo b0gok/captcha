@@ -15,14 +15,13 @@ namespace Mews\Captcha;
  */
 
 use Exception;
-use Illuminate\Config\Repository;
+use Illuminate\Contracts\Config\Repository;
 use Illuminate\Hashing\BcryptHasher as Hasher;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManager;
 use Illuminate\Session\Store as Session;
-use Illuminate\Support\HtmlString;
 
 /**
  * Class Captcha
@@ -497,6 +496,6 @@ class Captcha
 
             $attrs_str .= $attr . '="' . $value . '" ';
         }
-        return new HtmlString('<img src="' . $this->src($config) . '" ' . trim($attrs_str) . '>');
+        return '<img src="' . $this->src($config) . '" ' . trim($attrs_str) . '>';
     }
 }
